@@ -105,8 +105,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 	private Universe universe;
 	private float x,y;
-	private float z = -10;
-	
+	private float z = -10;//TODO pingouin
+	// de base private float z = -10;
 	static class RefreshHandler extends Handler {
 		WeakReference<GameRenderer> weak;
 		
@@ -289,8 +289,10 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 		// Translate the scene into the screen.
 		Matrix.setIdentityM(modelMatrix, 0);
-		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);     
-
+		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);     //TODO
+		// de base
+		//Matrix.setIdentityM(modelMatrix, 0);
+		//Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);  
 
 		Matrix.multiplyMM(mVMMatrix, 0, viewMatrix, 0, modelMatrix, 0);
 //		Matrix.invertM(mInvPVMMatrix, 0, mVMMatrix, 0);
@@ -352,7 +354,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		
 		Matrix.multiplyMM(mvpMatrix, 0, viewMatrix, 0, modelMatrix, 0);
 		Matrix.translateM(mvpMatrix, 0, x, y, z );
-        Matrix.scaleM(mvpMatrix, 0, .10f, 0.10f, 0.10f);
+        Matrix.scaleM(mvpMatrix, 0, .10f, 0.10f, 0.10f);//TODO
         if ((((int)time/180) % 4) == 3){
         	Matrix.rotateM(mvpMatrix, 0, time*2, -1, 0, 0);
         } else {
