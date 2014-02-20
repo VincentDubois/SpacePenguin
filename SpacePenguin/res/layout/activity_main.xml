@@ -8,11 +8,27 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
-    <com.example.spacepenguin.GameGLSurfaceView
-        android:id="@+id/gameGLSurfaceView1"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <com.example.spacepenguin.GameGLSurfaceView
+            android:id="@+id/gameGLSurfaceView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Score :"
+            android:textColor="@android:color/white"
+            android:textSize="30dp" />
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/button1"

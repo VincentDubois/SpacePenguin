@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 		surfaceView = (GameGLSurfaceView) findViewById(R.id.gameGLSurfaceView1);
 
 		
+		
 		final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
 
