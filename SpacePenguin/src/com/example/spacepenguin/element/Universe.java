@@ -38,7 +38,4 @@ public class Universe {
 		
 		return false;
 	}
-
-	
-
 }
