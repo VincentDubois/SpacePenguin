@@ -45,7 +45,7 @@ public class EcranMenu extends Activity {
 
         @Override
         public void onClick(View v) {
-          Intent intent = new Intent(EcranMenu.this, EcranMenu.class);
+          Intent intent = new Intent(EcranMenu.this, Credits.class);
           startActivity(intent);
           }
         });
@@ -56,7 +56,7 @@ public class EcranMenu extends Activity {
 
         @Override
         public void onClick(View v) {
-          Intent intent = new Intent(EcranMenu.this, EcranMenu.class);
+          Intent intent = new Intent(EcranMenu.this, Options.class);
           startActivity(intent);
           }
         });

@@ -7,5 +7,7 @@
     <string name="title_activity_accueil">Accueil</string>
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_ecran_menu">EcranMenu</string>
+    <string name="title_activity_credits">Credits</string>
+    <string name="title_activity_options">Options</string>
 
 </resources>
