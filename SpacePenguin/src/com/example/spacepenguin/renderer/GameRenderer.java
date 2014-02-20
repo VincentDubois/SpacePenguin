@@ -105,7 +105,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 	private Universe universe;
 	private float x,y;
-	private float z = -10;//TODO pingouin
+	private float z = 0;//TODO pingouin
 	// de base private float z = -10;
 	static class RefreshHandler extends Handler {
 		WeakReference<GameRenderer> weak;
@@ -289,7 +289,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 		// Translate the scene into the screen.
 		Matrix.setIdentityM(modelMatrix, 0);
-		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);     //TODO
+		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, -5f);     //TODO
 		// de base
 		//Matrix.setIdentityM(modelMatrix, 0);
 		//Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);  
