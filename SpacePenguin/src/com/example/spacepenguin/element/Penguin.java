@@ -10,7 +10,7 @@ public class Penguin extends VBO {
 	
 
 	public Penguin(Context context) throws IOException {
-		super(context, "pin_v1.obj");
+		super(context, "pin_v2.obj");
 	}
 
 }
