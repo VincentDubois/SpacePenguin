@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <bitmap
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:src="@drawable/fond2r"
+        android:gravity="fill_horizontal|bottom"
+         /> 
+
+<!--  <?xml version="1.0" encoding="utf-8"?>
+    <bitmap
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:src="@drawable/fond2rrrr"
+        android:gravity="left|bottom"
+         /> 
+
+ -->
