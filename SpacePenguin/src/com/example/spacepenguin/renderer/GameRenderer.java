@@ -29,6 +29,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 
 
@@ -53,10 +55,17 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //	private float[] accumulatedRotation = new float[16];
 	private float[] tmpMatrix = new float[16];
 
-
+	
 	private int mMVPMatrixHandle; //Model view projection
 	private int mMVMatrixHandle;  //Model view
 	private int mLightPosHandle;
+	
+	public void setGameover(TextView gameover) {
+		this.gameover = gameover; 
+
+	}
+	
+	private TextView gameover;
 	private int mTextureUniformHandle;
 	private int mPositionHandle;
 	private int mNormalHandle;
@@ -168,6 +177,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			
 			if (time>50 && universe.collision(x,y)){
 				playing = false;
+				gameover.setVisibility(View.VISIBLE);
+				
 			}
 			
 			surfaceView.requestRender();
