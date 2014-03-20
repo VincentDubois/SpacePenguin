@@ -39,7 +39,7 @@ import android.util.Log;
  */
 public class GameRenderer implements GLSurfaceView.Renderer {
 
-	private static final float TAILLE_PINGOUIN = .01f;
+	private static final float TAILLE_PINGOUIN = .06f;
 	private final Activity activity;
 	private final GLSurfaceView surfaceView;
 
@@ -240,7 +240,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 		// Load  textures
 		asteroidTextureHandle = setTexture(R.drawable.asteroid, 1); 
-		pinguinTextureHandle = setTexture(R.drawable.penguin_tex, 1); 
+		pinguinTextureHandle = setTexture(R.drawable.penguin_tex_s, 1); 
 
 
 
