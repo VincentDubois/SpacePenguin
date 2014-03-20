@@ -31,7 +31,9 @@
             android:paddingTop="25dp"
             android:text="Game over"
             android:textSize="35sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:alpha=".85"
+          />
 
     </FrameLayout>
 
