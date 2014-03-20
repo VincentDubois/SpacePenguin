@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.spacepenguin.element.Universe;
 import com.example.spacepenguin.renderer.GameRenderer;
@@ -38,7 +39,10 @@ public class MainActivity extends Activity {
 			surfaceView.setEGLContextClientVersion(2);
 
 			final GameRenderer mRenderer = new GameRenderer(this, surfaceView,universe);
-
+			
+			TextView score = (TextView) findViewById(R.id.score);
+			mRenderer.setScore(score);
+			
 			surfaceView.setRenderer(mRenderer);
 			surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 		} else {
