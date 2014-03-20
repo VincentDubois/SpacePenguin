@@ -36,6 +36,7 @@ import android.widget.TextView;
  */
 public class GameRenderer implements GLSurfaceView.Renderer {
 
+	private static final float TAILLE_PINGOUIN = .06f;
 	private final Activity activity;
 	private final GLSurfaceView surfaceView;
 
@@ -261,7 +262,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 		// Load  textures
 		asteroidTextureHandle = setTexture(R.drawable.asteroid, 1); 
-		pinguinTextureHandle = setTexture(R.drawable.penguin_tex, 1); 
+		pinguinTextureHandle = setTexture(R.drawable.penguin_tex_s, 1); 
 		fondTextureHandle = setTexture(R.drawable.fond, 1);
 		
 
@@ -422,7 +423,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		
 		Matrix.multiplyMM(mvpMatrix, 0, viewMatrix, 0, modelMatrix, 0);
 		Matrix.translateM(mvpMatrix, 0, x, y, z );
-        Matrix.scaleM(mvpMatrix, 0, .10f, 0.10f, 0.10f);//TODO
+        Matrix.scaleM(mvpMatrix, 0, TAILLE_PINGOUIN, TAILLE_PINGOUIN,TAILLE_PINGOUIN);//TODO
         if ((((int)time/180) % 4) == 3){
         	Matrix.rotateM(mvpMatrix, 0, time*2, -1, 0, 0);
         } else {
