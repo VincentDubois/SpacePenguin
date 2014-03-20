@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF000000"
+    android:background="@drawable/fond"
     android:onClick="start"
     android:orientation="vertical"
     tools:context=".MainActivity" >
@@ -27,11 +27,10 @@
             android:text="Score :"
             android:textColor="@android:color/white"
             android:textSize="30dp" />
-
     </FrameLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_entrer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="start"

@@ -6,14 +6,16 @@ public class Asteroid {
 	
 	public static final int MIN_DIST = 0;
 	public static final int MAX_DIST = 200;
-	private static final float MIN_SIZE = 0.12f;
-	private static final float MAX_SIZE = 0.9f;
+	private static final float MIN_SIZE = 0.05f;
+	private static final float MAX_SIZE = 0.85f;
+	private static final float Pingouin_size = 0.12f;
 	
 	//possibilité de modifier la taille des astéroides
 	private float[] coord;
 	private float size;
 	private float angleX;
 	private float angleY;
+	
 	public float[] getCoord() {
 		return coord;
 	}
@@ -52,7 +54,7 @@ public class Asteroid {
 	}
 
 	public boolean collision(float x, float y) {
-		return (coord[2]<10+size+MIN_DIST && coord[2]>10-size-MIN_DIST) && dist2(coord[0]-x,coord[1]-y) < (size+MIN_SIZE)*(size+MIN_SIZE);
+		return (coord[2]<size) && dist2(coord[0]-x,coord[1]-y) < (size+Pingouin_size)*(size+Pingouin_size);
 	}
 
 	private float dist2(float dx, float dy) {
