@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fond"
+  	android:background="#314359"
     android:onClick="start"
     android:orientation="vertical"
     tools:context=".MainActivity" >

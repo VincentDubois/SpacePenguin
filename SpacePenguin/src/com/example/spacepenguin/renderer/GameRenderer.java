@@ -139,6 +139,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 	private Penguin penguin;
 	private int pinguinTextureHandle;
 	private boolean playing;
+	private int fondTextureHandle;
 	public static final int DELAY = 30; // ms
 	
 
@@ -251,7 +252,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		// Load  textures
 		asteroidTextureHandle = setTexture(R.drawable.asteroid, 1); 
 		pinguinTextureHandle = setTexture(R.drawable.penguin_tex, 1); 
-
+		fondTextureHandle = setTexture(R.drawable.fond, 1);
+		
 
 
 	}
@@ -351,6 +353,51 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			
 			square.render(mPositionHandle, mNormalHandle, mTextureCoordinateHandle);
 		}
+		
+		
+		
+	// Pass in the light position in eye space.
+		GLES20.glUniform3f(mLightPosHandle, -2,0,-1);
+		
+		GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+
+		// Bind the texture to this unit.
+		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, fondTextureHandle);
+
+		// Tell the texture uniform sampler to use this texture in the
+		// shader by binding to texture unit 0.
+		GLES20.glUniform1i(mTextureUniformHandle, 0);
+
+		
+		
+		
+		   	
+			Matrix.setIdentityM(matrix, 0);
+			
+			Matrix.translateM(matrix, 0, 0, 0, -190);
+			float s = 43;
+			Matrix.scaleM(matrix, 0, s, s, s);
+			
+			//Matrix.rotateM(matrix, 0, time/(2*s), 0, 0, 1);
+			
+			Matrix.multiplyMM(mvpMatrix, 0, viewMatrix, 0, modelMatrix, 0);
+			Matrix.multiplyMM(tmpMatrix, 0, mvpMatrix, 0, matrix, 0);
+			System.arraycopy(tmpMatrix, 0, mvpMatrix, 0, 16);
+			GLES20.glUniformMatrix4fv(mMVMatrixHandle, 1, false, mvpMatrix, 0);
+			
+			Matrix.multiplyMM(tmpMatrix, 0, projectionMatrix, 0, mvpMatrix, 0);
+			System.arraycopy(tmpMatrix, 0, mvpMatrix, 0, 16);
+			
+			// Pass in the combined matrix.
+			GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
+			
+			
+			
+			square.render(mPositionHandle, mNormalHandle, mTextureCoordinateHandle);
+		
+	
+		
+		
 		
 		// Pass in the texture information
 		// Set the active texture unit to texture unit 0.
