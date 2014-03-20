@@ -209,7 +209,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //		generateCubes();			
 
 		// Set the background clear color to black.
-		GLES20.glClearColor(0f, 0f, 0.3f, 1f);
+		GLES20.glClearColor(0f, 0f, 0f, 0f);
 
 		// Use culling to remove back faces.
 		GLES20.glEnable(GLES20.GL_CULL_FACE);
