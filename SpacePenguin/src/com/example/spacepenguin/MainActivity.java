@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.spacepenguin.element.Universe;
 import com.example.spacepenguin.renderer.GameRenderer;
@@ -15,6 +16,7 @@ import com.example.spacepenguin.renderer.GameRenderer;
 public class MainActivity extends Activity {
 
 	private GameGLSurfaceView surfaceView;
+	private TextView gameover;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,15 @@ public class MainActivity extends Activity {
 			surfaceView.setEGLContextClientVersion(2);
 
 			final GameRenderer mRenderer = new GameRenderer(this, surfaceView,universe);
+			
+			TextView score = (TextView) findViewById(R.id.score);
+			mRenderer.setScore(score);
 
+			gameover = (TextView) findViewById(R.id.textgameover);
+			mRenderer.setGameover(gameover);
+			gameover.setVisibility(View.GONE);
+			
+			
 			surfaceView.setRenderer(mRenderer);
 			surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 		} else {
@@ -57,6 +67,12 @@ public class MainActivity extends Activity {
 	
 	public void start(View view){
 		surfaceView.start();
+		gameover.setVisibility(View.GONE);
 	}
+	
 
-}
+	
+
+		
+		
+	}
