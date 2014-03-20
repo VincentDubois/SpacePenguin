@@ -40,6 +40,9 @@ public class MainActivity extends Activity {
 			surfaceView.setEGLContextClientVersion(2);
 
 			final GameRenderer mRenderer = new GameRenderer(this, surfaceView,universe);
+			
+			TextView score = (TextView) findViewById(R.id.score);
+			mRenderer.setScore(score);
 
 			gameover = (TextView) findViewById(R.id.textgameover);
 			mRenderer.setGameover(gameover);

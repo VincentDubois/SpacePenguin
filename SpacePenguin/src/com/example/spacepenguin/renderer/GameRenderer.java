@@ -2,24 +2,9 @@ package com.example.spacepenguin.renderer;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import com.example.spacepenguin.R;
-import com.example.spacepenguin.R.drawable;
-import com.example.spacepenguin.R.raw;
-import com.example.spacepenguin.element.Asteroid;
-import com.example.spacepenguin.element.Penguin;
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.util.RawResourceReader;
-import com.example.spacepenguin.util.ShaderHelper;
-import com.example.spacepenguin.util.TextureHelper;
-
-
-
 
 import android.app.Activity;
 import android.opengl.GLES20;
@@ -27,9 +12,19 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import com.example.spacepenguin.R;
+import com.example.spacepenguin.element.Asteroid;
+import com.example.spacepenguin.element.Penguin;
+import com.example.spacepenguin.element.Universe;
+import com.example.spacepenguin.util.RawResourceReader;
+import com.example.spacepenguin.util.ShaderHelper;
+import com.example.spacepenguin.util.TextureHelper;
 import android.widget.TextView;
 
 
@@ -55,7 +50,11 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //	private float[] accumulatedRotation = new float[16];
 	private float[] tmpMatrix = new float[16];
 
-	
+	public void setScore(TextView score) {
+		this.score = score;
+	}
+
+	private TextView score;
 	private int mMVPMatrixHandle; //Model view projection
 	private int mMVMatrixHandle;  //Model view
 	private int mLightPosHandle;
@@ -176,6 +175,16 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			move();
 			time += 1;
 			
+			//setscore a rajouter pour le voir dans le textview
+			GameRenderer mRenderer = null;
+			if (score != null)
+				new Handler(Looper.getMainLooper()).post(new Runnable() {
+				    @Override
+				    public void run() {
+				    	score.setText(Integer.toString((int) time));
+				    }
+				});
+			
 			if (time>50 && universe.collision(x,y)){
 				playing = false;
 				gameover.setVisibility(View.VISIBLE);
@@ -185,6 +194,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			surfaceView.requestRender();
 		}
 	}
+	
 	
 	public void start(){
 		playing = true;
@@ -211,7 +221,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //		generateCubes();			
 
 		// Set the background clear color to black.
-		GLES20.glClearColor(0f, 0f, 0.3f, 1f);
+		GLES20.glClearColor(0f, 0f, 0f, 0f);
 
 		// Use culling to remove back faces.
 		GLES20.glEnable(GLES20.GL_CULL_FACE);
