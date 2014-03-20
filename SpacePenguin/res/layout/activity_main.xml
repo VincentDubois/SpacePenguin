@@ -3,21 +3,40 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fond"
+  	android:background="#314359"
     android:onClick="start"
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
     <FrameLayout
+
+        android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1" >
 
         <com.example.spacepenguin.GameGLSurfaceView
             android:id="@+id/gameGLSurfaceView1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/textgameover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:drawable/alert_light_frame"
+            android:paddingBottom="25dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="25dp"
+            android:text="Game over"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:alpha=".85"
+          />
+
+
 
         <TextView
             android:id="@+id/score"
