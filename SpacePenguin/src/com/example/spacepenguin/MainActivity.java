@@ -16,6 +16,7 @@ import com.example.spacepenguin.renderer.GameRenderer;
 public class MainActivity extends Activity {
 
 	private GameGLSurfaceView surfaceView;
+	private TextView gameover;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,11 @@ public class MainActivity extends Activity {
 			
 			TextView score = (TextView) findViewById(R.id.score);
 			mRenderer.setScore(score);
+
+			gameover = (TextView) findViewById(R.id.textgameover);
+			mRenderer.setGameover(gameover);
+			gameover.setVisibility(View.GONE);
+			
 			
 			surfaceView.setRenderer(mRenderer);
 			surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
@@ -61,6 +67,12 @@ public class MainActivity extends Activity {
 	
 	public void start(View view){
 		surfaceView.start();
+		gameover.setVisibility(View.GONE);
 	}
+	
 
-}
+	
+
+		
+		
+	}
