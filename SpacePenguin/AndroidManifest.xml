@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.spacepenguin"
+    package="fr.univartois.iutlens.spacepenguin"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="Beta 1.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -18,11 +18,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.spacepenguin.MainActivity"
+            android:name="fr.univartois.iutlens.spacepenguin.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.example.spacepenguin.EcranMenu"
+            android:name="fr.univartois.iutlens.spacepenguin.EcranMenu"
             android:label="@string/title_activity_ecran_menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,11 +31,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.spacepenguin.Credits"
+            android:name="fr.univartois.iutlens.spacepenguin.Credits"
             android:label="@string/title_activity_credits" >
         </activity>
         <activity
-            android:name="com.example.spacepenguin.Options"
+            android:name="fr.univartois.iutlens.spacepenguin.Options"
             android:label="@string/title_activity_options" >
         </activity>
     </application>
