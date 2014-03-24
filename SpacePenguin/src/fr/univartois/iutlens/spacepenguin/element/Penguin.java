@@ -1,8 +1,10 @@
-package com.example.spacepenguin.element;
+package fr.univartois.iutlens.spacepenguin.element;
+
+
 
 import java.io.IOException;
 
-import com.example.spacepenguin.renderer.VBO;
+import fr.univartois.iutlens.spacepenguin.renderer.VBO;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.example.spacepenguin;
+package fr.univartois.iutlens.spacepenguin;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -9,9 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
-
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.renderer.GameRenderer;
+import fr.univartois.iutlens.spacepenguin.element.Universe;
+import fr.univartois.iutlens.spacepenguin.renderer.GameRenderer;
 
 public class MainActivity extends Activity {
 
