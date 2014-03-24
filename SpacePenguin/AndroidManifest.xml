@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="fr.univartois.iutlens.spacepenguin.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="fr.univartois.iutlens.spacepenguin.EcranMenu"
