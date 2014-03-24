@@ -58,12 +58,12 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 	private int mMVMatrixHandle;  //Model view
 	private int mLightPosHandle;
 	
-	public void setGameover(TextView gameover) {
+	public void setGameover(View gameover) {
 		this.gameover = gameover; 
 
 	}
 	
-	private TextView gameover;
+	private View gameover;
 	private int mTextureUniformHandle;
 	private int mPositionHandle;
 	private int mNormalHandle;

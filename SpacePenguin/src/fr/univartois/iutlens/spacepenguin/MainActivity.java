@@ -15,7 +15,7 @@ import fr.univartois.iutlens.spacepenguin.renderer.GameRenderer;
 public class MainActivity extends Activity {
 
 	private GameGLSurfaceView surfaceView;
-	private TextView gameover;
+	private View gameover;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 			TextView score = (TextView) findViewById(R.id.score);
 			mRenderer.setScore(score);
 
-			gameover = (TextView) findViewById(R.id.textgameover);
+			gameover = (View) findViewById(R.id.layoutgameover);
 			mRenderer.setGameover(gameover);
 			gameover.setVisibility(View.GONE);
 			
