@@ -22,6 +22,7 @@ public class Universe {
 		this(120);
 	}
 
+	//TODO Fonction qui gère le mouvement des astéroides d=la distance coord[2] -= d;
 	public  void move(float d){
 		for(Asteroid a : vector){
 			a.move(d);
