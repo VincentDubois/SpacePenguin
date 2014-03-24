@@ -1,4 +1,4 @@
-package com.example.spacepenguin.element;
+package fr.univartois.iutlens.spacepenguin.element;
 
 import java.util.Vector;
 

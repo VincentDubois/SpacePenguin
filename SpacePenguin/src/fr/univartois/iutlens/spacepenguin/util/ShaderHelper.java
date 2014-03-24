@@ -1,4 +1,4 @@
-package com.example.spacepenguin.util;
+package fr.univartois.iutlens.spacepenguin.util;
 
 import android.opengl.GLES20;
 import android.util.Log;

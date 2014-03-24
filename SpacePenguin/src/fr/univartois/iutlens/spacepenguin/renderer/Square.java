@@ -1,4 +1,4 @@
-package com.example.spacepenguin.renderer;
+package fr.univartois.iutlens.spacepenguin.renderer;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

@@ -1,4 +1,4 @@
-package com.example.spacepenguin.renderer;
+package fr.univartois.iutlens.spacepenguin.renderer;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -17,15 +17,13 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.example.spacepenguin.R;
-import com.example.spacepenguin.element.Asteroid;
-import com.example.spacepenguin.element.Penguin;
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.util.RawResourceReader;
-import com.example.spacepenguin.util.ShaderHelper;
-import com.example.spacepenguin.util.TextureHelper;
-import android.widget.TextView;
+import fr.univartois.iutlens.spacepenguin.R;
+import fr.univartois.iutlens.spacepenguin.element.Asteroid;
+import fr.univartois.iutlens.spacepenguin.element.Penguin;
+import fr.univartois.iutlens.spacepenguin.element.Universe;
+import fr.univartois.iutlens.spacepenguin.util.RawResourceReader;
+import fr.univartois.iutlens.spacepenguin.util.ShaderHelper;
+import fr.univartois.iutlens.spacepenguin.util.TextureHelper;
 
 
 
@@ -296,6 +294,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);	
 		GLES20.glEnable(GLES20.GL_CULL_FACE);
 		GLES20.glDisable(GLES20.GL_BLEND);
+		GLES20.glEnable( GLES20.GL_DEPTH_TEST );
+		GLES20.glDepthFunc( GLES20.GL_LEQUAL );
 		GLES20.glDepthMask(true);
 
 		GLES20.glUseProgram(mProgramHandle);
