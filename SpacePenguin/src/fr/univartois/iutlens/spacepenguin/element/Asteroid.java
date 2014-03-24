@@ -15,6 +15,9 @@ public class Asteroid {
 	private float size;
 	private float angleX;
 	private float angleY;
+	private float speedX;
+	private float speedY;
+	private float speedZ;
 	
 	public float[] getCoord() {
 		return coord;
@@ -41,9 +44,17 @@ public class Asteroid {
 	}
 	
 	public boolean move(float d){
-		coord[2] -= d;
-		coord[1] -= angleY*d;
-		coord[0] -= angleX*d;
+		speedX=d;
+		speedY=angleY*d;
+		speedZ=angleX*d;
+		coord[2] -= speedX;
+		coord[1] -= speedY;
+		coord[0] -= speedZ;
+		
+		//coord[2] -= d;
+		//coord[1] -= angleY*d;
+		//coord[0] -= angleX*d;
+		
 		if (coord[2]< MIN_DIST){
 			coord[0] += (MAX_DIST-MIN_DIST)*angleX;
 			coord[1] += (MAX_DIST-MIN_DIST)*angleY;
@@ -55,7 +66,21 @@ public class Asteroid {
 
 	//size seul=taille d'un astéroide
 	public boolean collision(float x, float y) {
-		return (coord[2]<size) && dist2(coord[0]-x,coord[1]-y) < (size+Pingouin_size)*(size+Pingouin_size);
+		
+		//return (coord[2]<size) && dist2(coord[0]-x,coord[1]-y) < (size+Pingouin_size)*(size+Pingouin_size);
+		
+		//coord[2] = (far ? MAX_DIST : ((float)(MIN_DIST+(MAX_DIST-MIN_DIST)*Math.random())));
+		//coord[2] = (far ? MAX_DIST : ((float)(0+(200-0)*Math.random())));
+		
+		                        //size = (float)(MIN_SIZE+(MAX_SIZE-MIN_SIZE)*Math.random());
+						    	//size = (float)(0.05f+(0.85f-0.05f)*Math.random());
+								//size = (float)(0.05f+(0.80f)*Math.random()); = taille de l'astéroide
+		
+		//test1= si distance parcourue en Z en 1 unité de temps est inférieure à taille d'un astéroide alors retourne vrai
+		//pour dist2 voir la fonction en dessous
+		
+		return (coord[2]<speedZ+size) && dist2(coord[0]-x,coord[1]-y) < (size+Pingouin_size)*(size+Pingouin_size);
+		
 	}
 
 	private float dist2(float dx, float dy) {
