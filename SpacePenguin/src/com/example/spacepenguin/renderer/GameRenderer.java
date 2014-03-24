@@ -99,6 +99,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 	public float bottom;
 	public float top;
 
+	
+	//TODO C'est le paramètre temps qu'il faut lier à la vitesse des astéroides pour augmenter la difficulté
 	public volatile float time = 0f;
 
 	private float ratio;
@@ -182,8 +184,10 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		Log.d("start","start");
 	}
 	
+	//TODO gère la rapidité des astéroides
 	public synchronized void move(){
-		universe.move(1f);
+		universe.move(1f*(1+time/1000));
+		//universe.move(1f);
 	}
 
 
@@ -287,9 +291,9 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		mTextureCoordinateHandle = GLES20.glGetAttribLocation(mProgramHandle, "a_TexCoordinate");
 
 
-		// Translate the scene into the screen.
+		// Translate the scene into the screen. 
 		Matrix.setIdentityM(modelMatrix, 0);
-		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, -5f);     //TODO
+		Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, -5f);     //TODO Dernier chiffre=Position de la caméra
 		// de base
 		//Matrix.setIdentityM(modelMatrix, 0);
 		//Matrix.translateM(modelMatrix, 0, -x*0.5f, -y*0.5f, 5f);  

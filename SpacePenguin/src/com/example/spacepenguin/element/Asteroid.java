@@ -53,6 +53,7 @@ public class Asteroid {
 		return false;
 	}
 
+	//size seul=taille d'un astéroide
 	public boolean collision(float x, float y) {
 		return (coord[2]<size) && dist2(coord[0]-x,coord[1]-y) < (size+Pingouin_size)*(size+Pingouin_size);
 	}
@@ -60,5 +61,5 @@ public class Asteroid {
 	private float dist2(float dx, float dy) {
 		return dx*dx+dy*dy;
 	}
-	//en y on est toujours se décaler de Z*dY 
+	//en y on se décale de Z*dY 
 }
