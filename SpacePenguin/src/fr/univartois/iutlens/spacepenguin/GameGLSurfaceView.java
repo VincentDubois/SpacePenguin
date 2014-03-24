@@ -1,6 +1,6 @@
-package com.example.spacepenguin;
+package fr.univartois.iutlens.spacepenguin;
 
-import com.example.spacepenguin.renderer.GameRenderer;
+import fr.univartois.iutlens.spacepenguin.renderer.GameRenderer;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;

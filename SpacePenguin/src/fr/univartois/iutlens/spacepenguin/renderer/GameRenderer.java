@@ -1,25 +1,10 @@
-package com.example.spacepenguin.renderer;
+package fr.univartois.iutlens.spacepenguin.renderer;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import com.example.spacepenguin.R;
-import com.example.spacepenguin.R.drawable;
-import com.example.spacepenguin.R.raw;
-import com.example.spacepenguin.element.Asteroid;
-import com.example.spacepenguin.element.Penguin;
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.util.RawResourceReader;
-import com.example.spacepenguin.util.ShaderHelper;
-import com.example.spacepenguin.util.TextureHelper;
-
-
-
 
 import android.app.Activity;
 import android.opengl.GLES20;
@@ -27,8 +12,18 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import fr.univartois.iutlens.spacepenguin.R;
+import fr.univartois.iutlens.spacepenguin.element.Asteroid;
+import fr.univartois.iutlens.spacepenguin.element.Penguin;
+import fr.univartois.iutlens.spacepenguin.element.Universe;
+import fr.univartois.iutlens.spacepenguin.util.RawResourceReader;
+import fr.univartois.iutlens.spacepenguin.util.ShaderHelper;
+import fr.univartois.iutlens.spacepenguin.util.TextureHelper;
 
 
 
@@ -39,6 +34,7 @@ import android.util.Log;
  */
 public class GameRenderer implements GLSurfaceView.Renderer {
 
+	private static final float TAILLE_PINGOUIN = .06f;
 	private final Activity activity;
 	private final GLSurfaceView surfaceView;
 
@@ -53,10 +49,21 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //	private float[] accumulatedRotation = new float[16];
 	private float[] tmpMatrix = new float[16];
 
+	public void setScore(TextView score) {
+		this.score = score;
+	}
 
+	private TextView score;
 	private int mMVPMatrixHandle; //Model view projection
 	private int mMVMatrixHandle;  //Model view
 	private int mLightPosHandle;
+	
+	public void setGameover(TextView gameover) {
+		this.gameover = gameover; 
+
+	}
+	
+	private TextView gameover;
 	private int mTextureUniformHandle;
 	private int mPositionHandle;
 	private int mNormalHandle;
@@ -132,6 +139,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 	private Penguin penguin;
 	private int pinguinTextureHandle;
 	private boolean playing;
+	private int fondTextureHandle;
 	public static final int DELAY = 30; // ms
 	
 
@@ -168,13 +176,26 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			move();
 			time += 1;
 			
+			//setscore a rajouter pour le voir dans le textview
+			GameRenderer mRenderer = null;
+			if (score != null)
+				new Handler(Looper.getMainLooper()).post(new Runnable() {
+				    @Override
+				    public void run() {
+				    	score.setText(Integer.toString((int) time));
+				    }
+				});
+			
 			if (time>50 && universe.collision(x,y)){
 				playing = false;
+				gameover.setVisibility(View.VISIBLE);
+				
 			}
 			
 			surfaceView.requestRender();
 		}
 	}
+	
 	
 	public void start(){
 		playing = true;
@@ -203,7 +224,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 //		generateCubes();			
 
 		// Set the background clear color to black.
-		GLES20.glClearColor(0f, 0f, 0.3f, 1f);
+		GLES20.glClearColor(0f, 0f, 0f, 0f);
 
 		// Use culling to remove back faces.
 		GLES20.glEnable(GLES20.GL_CULL_FACE);
@@ -243,8 +264,9 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 
 		// Load  textures
 		asteroidTextureHandle = setTexture(R.drawable.asteroid, 1); 
-		pinguinTextureHandle = setTexture(R.drawable.penguin_tex, 1); 
-
+		pinguinTextureHandle = setTexture(R.drawable.penguin_tex_s, 1); 
+		fondTextureHandle = setTexture(R.drawable.fond, 1);
+		
 
 
 	}
@@ -276,6 +298,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);	
 		GLES20.glEnable(GLES20.GL_CULL_FACE);
 		GLES20.glDisable(GLES20.GL_BLEND);
+		GLES20.glEnable( GLES20.GL_DEPTH_TEST );
+		GLES20.glDepthFunc( GLES20.GL_LEQUAL );
 		GLES20.glDepthMask(true);
 
 		GLES20.glUseProgram(mProgramHandle);
@@ -345,6 +369,51 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			square.render(mPositionHandle, mNormalHandle, mTextureCoordinateHandle);
 		}
 		
+		
+		
+	// Pass in the light position in eye space.
+		GLES20.glUniform3f(mLightPosHandle, -2,0,-1);
+		
+		GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+
+		// Bind the texture to this unit.
+		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, fondTextureHandle);
+
+		// Tell the texture uniform sampler to use this texture in the
+		// shader by binding to texture unit 0.
+		GLES20.glUniform1i(mTextureUniformHandle, 0);
+
+		
+		
+		
+		   	
+			Matrix.setIdentityM(matrix, 0);
+			
+			Matrix.translateM(matrix, 0, 0, 0, -190);
+			float s = 43;
+			Matrix.scaleM(matrix, 0, s, s, s);
+			
+			//Matrix.rotateM(matrix, 0, time/(2*s), 0, 0, 1);
+			
+			Matrix.multiplyMM(mvpMatrix, 0, viewMatrix, 0, modelMatrix, 0);
+			Matrix.multiplyMM(tmpMatrix, 0, mvpMatrix, 0, matrix, 0);
+			System.arraycopy(tmpMatrix, 0, mvpMatrix, 0, 16);
+			GLES20.glUniformMatrix4fv(mMVMatrixHandle, 1, false, mvpMatrix, 0);
+			
+			Matrix.multiplyMM(tmpMatrix, 0, projectionMatrix, 0, mvpMatrix, 0);
+			System.arraycopy(tmpMatrix, 0, mvpMatrix, 0, 16);
+			
+			// Pass in the combined matrix.
+			GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
+			
+			
+			
+			square.render(mPositionHandle, mNormalHandle, mTextureCoordinateHandle);
+		
+	
+		
+		
+		
 		// Pass in the texture information
 		// Set the active texture unit to texture unit 0.
 		GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
@@ -358,7 +427,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		
 		Matrix.multiplyMM(mvpMatrix, 0, viewMatrix, 0, modelMatrix, 0);
 		Matrix.translateM(mvpMatrix, 0, x, y, z );
-        Matrix.scaleM(mvpMatrix, 0, .10f, 0.10f, 0.10f);//TODO
+        Matrix.scaleM(mvpMatrix, 0, TAILLE_PINGOUIN, TAILLE_PINGOUIN,TAILLE_PINGOUIN);//TODO
         if ((((int)time/180) % 4) == 3){
         	Matrix.rotateM(mvpMatrix, 0, time*2, -1, 0, 0);
         } else {
