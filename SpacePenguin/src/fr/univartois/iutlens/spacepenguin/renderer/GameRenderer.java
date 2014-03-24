@@ -386,7 +386,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 			Matrix.setIdentityM(matrix, 0);
 			
 			Matrix.translateM(matrix, 0, 0, 0, -190);
-			float s = 43;
+			float s = 45;
 			Matrix.scaleM(matrix, 0, s, s, s);
 			
 			//Matrix.rotateM(matrix, 0, time/(2*s), 0, 0, 1);
