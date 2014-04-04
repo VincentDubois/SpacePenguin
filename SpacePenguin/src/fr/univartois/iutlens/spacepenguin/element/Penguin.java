@@ -4,9 +4,8 @@ package fr.univartois.iutlens.spacepenguin.element;
 
 import java.io.IOException;
 
-import fr.univartois.iutlens.spacepenguin.renderer.VBO;
-
 import android.content.Context;
+import fr.univartois.iutlens.spacepenguin.renderer.VBO;
 
 public class Penguin extends VBO {
 	

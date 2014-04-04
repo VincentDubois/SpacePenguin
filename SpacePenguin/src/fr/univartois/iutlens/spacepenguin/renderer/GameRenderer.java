@@ -25,14 +25,6 @@ import fr.univartois.iutlens.spacepenguin.util.RawResourceReader;
 import fr.univartois.iutlens.spacepenguin.util.ShaderHelper;
 import fr.univartois.iutlens.spacepenguin.util.TextureHelper;
 
-import com.example.spacepenguin.R;
-import com.example.spacepenguin.element.Asteroid;
-import com.example.spacepenguin.element.Penguin;
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.util.RawResourceReader;
-import com.example.spacepenguin.util.ShaderHelper;
-import com.example.spacepenguin.util.TextureHelper;
-
 
 
 /**

@@ -1,13 +1,12 @@
 package fr.univartois.iutlens.spacepenguin;
 
-import fr.univartois.iutlens.spacepenguin.renderer.GameRenderer;
-
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import fr.univartois.iutlens.spacepenguin.renderer.GameRenderer;
 
 
 public class GameGLSurfaceView extends GLSurfaceView {	
