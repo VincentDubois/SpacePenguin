@@ -2,24 +2,9 @@ package com.example.spacepenguin.renderer;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import com.example.spacepenguin.R;
-import com.example.spacepenguin.R.drawable;
-import com.example.spacepenguin.R.raw;
-import com.example.spacepenguin.element.Asteroid;
-import com.example.spacepenguin.element.Penguin;
-import com.example.spacepenguin.element.Universe;
-import com.example.spacepenguin.util.RawResourceReader;
-import com.example.spacepenguin.util.ShaderHelper;
-import com.example.spacepenguin.util.TextureHelper;
-
-
-
 
 import android.app.Activity;
 import android.opengl.GLES20;
@@ -29,6 +14,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+
+import com.example.spacepenguin.R;
+import com.example.spacepenguin.element.Asteroid;
+import com.example.spacepenguin.element.Penguin;
+import com.example.spacepenguin.element.Universe;
+import com.example.spacepenguin.util.RawResourceReader;
+import com.example.spacepenguin.util.ShaderHelper;
+import com.example.spacepenguin.util.TextureHelper;
 
 
 
