@@ -1,4 +1,4 @@
-package com.example.spacepenguin.renderer;
+package fr.univartois.iutlens.spacepenguin.renderer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
