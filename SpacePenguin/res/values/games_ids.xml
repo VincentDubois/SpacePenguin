@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">552848434754</string>
+  <string name="achievement_un_petit_pas_pour_le_pingouin">CgkIwszWwosQEAIQAQ</string>
+  <string name="achievement_un_grand_pas_pour_la_pingouinit">CgkIwszWwosQEAIQAg</string>
+  <string name="achievement_noob">CgkIwszWwosQEAIQAw</string>
+  <string name="achievement_noob_master">CgkIwszWwosQEAIQBA</string>
+  <string name="achievement_maitre_pinguoin">CgkIwszWwosQEAIQBQ</string>
+  <string name="leaderboard_les_meilleurs_pingouins_de_lespace">CgkIwszWwosQEAIQBg</string>
+</resources>
