@@ -2,8 +2,6 @@ package fr.univartois.iutlens.spacepenguin.element;
 
 import java.util.Vector;
 
-import android.util.Log;
-
 public class Universe {
 	
 	

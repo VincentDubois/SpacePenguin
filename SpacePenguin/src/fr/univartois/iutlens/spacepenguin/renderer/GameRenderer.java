@@ -148,6 +148,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		this.activity = activity;	
 		surfaceView = glSurfaceView;
 		this.universe = universe;
+		
 		try {
 			this.penguin = new Penguin(activity); 
 		} catch (IOException e) {
