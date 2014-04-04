@@ -54,6 +54,9 @@ public class GameGLSurfaceView extends GLSurfaceView {
 		super.setRenderer(renderer);
 	}
 	
+	@Override
+	Games.Achievements.unlock(getApiClient(), "CgkIwszWwosQEAIQAw", 1);
+	
 
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
