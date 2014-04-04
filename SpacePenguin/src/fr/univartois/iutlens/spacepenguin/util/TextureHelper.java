@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 
+
 public class TextureHelper{
 	
 	public static int loadTexture(final Context context, final int resourceId, final int scale)

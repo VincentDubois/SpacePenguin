@@ -136,7 +136,8 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 	};
 	
 	RefreshHandler handler = new RefreshHandler(this);
-	private Penguin penguin;
+	private Penguin[] penguin;
+
 	private int pinguinTextureHandle;
 	private boolean playing;
 	private int fondTextureHandle;
@@ -148,7 +149,7 @@ public class GameRenderer implements GLSurfaceView.Renderer {
 		surfaceView = glSurfaceView;
 		this.universe = universe;
 		try {
-			this.penguin = new Penguin(activity);
+			this.penguin = new Penguin(activity); 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
