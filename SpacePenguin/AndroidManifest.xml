@@ -38,6 +38,10 @@
             android:name="fr.univartois.iutlens.spacepenguin.Options"
             android:label="@string/title_activity_options" >
         </activity>
+        
+        <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
+        
     </application>
 
 </manifest>
